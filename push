@@ -1,0 +1,4 @@
+#!/bin/bash
+/usr/bin/git add -A
+/usr/bin/git commit -m "$(date | awk '{print $4}')"
+/usr/bin/git push
