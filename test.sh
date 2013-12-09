@@ -8,6 +8,4 @@ do
 	x=$(($i * $x))
 	echo -e "$x"
 done
-
-echo "Ändring" 
 exit 0

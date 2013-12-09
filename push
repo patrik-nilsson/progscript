@@ -1,4 +1,5 @@
 #!/bin/bash
-/usr/bin/git add -A
-/usr/bin/git commit -m "$(date | awk '{print $4}')"
-/usr/bin/git push
+cd $HOME/bash_grundkurs
+/usr/bin/git add -A 2> /dev/null
+/usr/bin/git commit -m "$(date | awk '{print $2,$3,$4}')" 2> /dev/null
+/usr/bin/git push 2> /dev/null
