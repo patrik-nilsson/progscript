@@ -1,8 +1,8 @@
 #!/bin/bash
-Grade=76
+Grade="10"
 if [ "$Grade" -ge 80 ]; then
 	echo "VG"
-elif [ "$Grade" -ge 50]; then
+elif [ "$Grade" -ge 50 ]; then
 	echo "G"
 else
 	echo "IG"
