@@ -2,19 +2,22 @@
 declare Answ="N"
 declare Amm
 declare Sum
-while [ "$Answ" != "K" -a $Answ != "k" -a $Answ != "D" -a $Answ != "d" ] 
+while true; 
+#As long as the answer is wrong, it will keep asking for an answer.
 do
 	read -p "Do you want to convert from Kronor or Dollar? (k/d) " Answ
-	if [ $Answ = K ] || [ $Answ = k ]; then
+	if [ "$Answ" = "K" ] || [ "$Answ" = "k" ]; then #If answer is k or K
 		read -p "How many Kronor: " Amm
-		let Sum="$Amm/7"
+		Sum=$(bc -l <<< "scale=2; $Amm/7") #Convert Kronor to Dollar
 		echo "$Amm Kronor is $Sum Dollar."
-	elif [ $Answ = D ] || [ $Answ = d ]; then
+		break
+	elif [ "$Answ" = "D" ] || [ "$Answ" = "d" ]; then #If answer is D or d
 		read -p "How many Dollar: " Amm
-		let Sum="$Amm*7"
+		Sum=$(bc -l <<< "scale=2; $Amm*7")  #Convert Dollar to Kronor
 		echo "$Amm Dollar is $Sum Kronor."
+		break
 	else
-		echo "Wrong input."
-	fi
-done
+		echo "Wrong input." #If the answer was wrong, show this message and repeat.
+	fi #End of If
+done #End of Loop
 exit 0
