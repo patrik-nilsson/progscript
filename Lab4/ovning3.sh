@@ -23,8 +23,9 @@ do
 			echo "|Insert your pin:  |"
 			echo "| - - - -          |"
 			echo "|__________________|"
+			Pass=0
 			read Pass
-			if [ $Pass = 9999 ]; then
+			if [ $Pass -eq 9999 ]; then
 				echo "____________________"
 				echo "|Welcome $USER! <<<"
 				echo "|[W]ithdraw        |"
