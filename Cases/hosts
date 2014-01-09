@@ -1,0 +1,5 @@
+DNS1	8.8.8.8	index.html
+Nothing	123.123.123.123 index.html
+MyPC	172.24.10.20	test.html
+DNS2	4.4.4.4	index.html
+Google	173.194.32.33	index.html
