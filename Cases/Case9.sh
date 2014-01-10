@@ -1,6 +1,9 @@
 #!/bin/bash
 if [ ! -e hosts ]; then
 	echo "hosts file doesn't exist!"
+	echo "Please create a file named 'hosts' and follow this example:"
+        echo "Host1	192.168.100.100		index.html"
+        echo "Host2	172.24.200.200		sub/help.html"
 	exit 0
 fi
 declare -a Host
