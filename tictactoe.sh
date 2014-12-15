@@ -15,7 +15,7 @@ put=0
 			select Place in Upperleft Uppermiddle Upperright Middleleft Middle Middleright Lowerleft Lowermiddle Lowerright; do
 				case $Place in
 					Upperleft)
-						if [ ${x[0]} != X ] & [ ${x[0]} != O ]; then
+						if [ ${x[0]} != X ];then #& [ ${x[0]} != O ]; then
 							x[0]="X"
 							break
 						else
