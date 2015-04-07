@@ -1,102 +1,85 @@
 #!/bin/bash
-x=(Q Q Q Q Q Q Q Q Q)
+function place {
+	if [ "${x[y]}" != "X" -a "${x[y]}" != "O" ]; then
+		if [ $playerturn -eq 1 ]; then
+			player="X"
+			x[y]=$player
+			((put++))
+			break
+		else
+			player="O"
+			x[y]=$player
+			((put++))
+			break
+		fi
+	else
+		echo "This field is already marked!"
+	fi
+}
+#function gameover {
+#	if [ y -lt 4 ]; then
+#		if +3 and +6 is $player
+#	elif [ y -gt 6 ]; then
+#		if -3 and -6 is $player
+#	else
+#		if -3 and +3 is $player
+#	fi
+#}
+x=(" " " " " " " " " " " " " " " " " ")
 Winner=0
 playerturn=1
 while [ $Winner -lt 1 ]; do
 put=0
-	if [ $playerturn -eq 1 ]; then
-	
-		while [ $put -lt 1 ]; do
-		
-			echo "${x[0]} | ${x[1]} | ${x[2]}"
-			echo "${x[3]} | ${x[4]} | ${x[5]}"
-			echo "${x[6]} | ${x[7]} | ${x[8]}"	
-			echo "Where do you want to place your mark?"
-			select Place in Upperleft Uppermiddle Upperright Middleleft Middle Middleright Lowerleft Lowermiddle Lowerright; do
-				case $Place in
-					Upperleft)
-						if [ ${x[0]} != X ];then #& [ ${x[0]} != O ]; then
-							x[0]="X"
-							break
-						else
-							echo "This field is already marked!"
-						fi
-					;;
-					Uppermiddle)
-                                                if [ "${x[1]}" != "X" -o "${x[1]}" != "O" ]; then
-                                                        x[1]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-					Upperright)
-                                                if [ "${x[2]}" != "X" -o "${x[2]}" != "O" ]; then
-                                                        x[2]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-					Middleleft)
-                                                if [ "${x[3]}" != "X" -o "${x[3]}" != "O" ]; then
-                                                        x[3]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-					Middle)
-                                                if [ "${x[4]}" != "X" -o "${x[4]}" != "O" ]; then
-                                                        x[4]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-					Middleright) 
-                                                if [ "${x[5]}" != "X" -o "${x[5]}" != "O" ]; then
-                                                        x[5]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-					Lowerleft)
-                                                if [ "${x[6]}" != "X" -o "${x[6]}" != "O" ]; then
-                                                        x[6]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-					Lowermiddle)
-                                                if [ "${x[7]}" != "X" -o "${x[7]}" != "O" ]; then
-                                                        x[7]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-					Lowerright)
-                                                if [ "${x[8]}" != "X" -o "${x[8]}" != "O" ]; then
-                                                        x[8]="X"
-                                                        break
-                                                else
-                                                        echo "This field is already marked!"
-                                                fi
-					;;
-				esac
-			done
-
+	while [ $put -lt 1 ]; do
+		echo $playerturn	
+		echo "${x[0]} | ${x[1]} | ${x[2]}"
+		echo "${x[3]} | ${x[4]} | ${x[5]}"
+		echo "${x[6]} | ${x[7]} | ${x[8]}"	
+		echo "Where do you want to place your mark?"
+		select Place in Upperleft Uppermiddle Upperright Middleleft Middle Middleright Lowerleft Lowermiddle Lowerright; do
+			case $Place in
+				Upperleft)
+					y=0
+					place
+				;;
+				Uppermiddle)
+					y=1
+					place
+				;;
+				Upperright)
+					y=2
+					place
+				;;
+				Middleleft)
+					y=3
+					place
+				;;
+				Middle)
+					y=4
+					place
+				;;
+				Middleright) 
+					y=5
+					place
+				;;
+				Lowerleft)
+					y=6
+					place
+				;;
+				Lowermiddle)
+					y=7
+					place
+				;;
+				Lowerright)
+					y=8
+					place
+				;;
+			esac
 		done
+	done
+	if [ $playerturn -lt 2 ]; then
 		((playerturn++))
-
 	elif [ $playerturn -eq 2 ]; then
-
-	
 		((playerturn--))
-
 	fi
-
 done
