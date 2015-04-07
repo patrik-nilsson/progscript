@@ -1,0 +1,27 @@
+#!/bin/bash
+declare Answ #Declares my variables
+declare Comm
+
+cd $HOME/bash_grundkurs #Puts me in ~/bash_grundkurs
+
+/usr/bin/git add -A 2> /dev/null
+#Runs "git add -A" (gits all files) and removes errors from the output.
+
+read -p "Add a custom comment? (y/n) " Answ
+#Asks if you want to add a comment, duh!
+
+if [ "$Answ" = "y" ] || [ "$Answ" = "Y" ]; then #If the Answer is yes then..
+	read -p "Your comment: " Comm
+	#.. it asks you for a comment..
+	/usr/bin/git commit -m "$Comm" 2> /dev/null
+	#.. and adds that comment to the files gitted. Also removes errors.
+
+else #If the answer was not "y"
+	/usr/bin/git commit -m "$(date | awk '{print $2,$3,$4}')" 2> /dev/null
+#Adds the current time and date as comment on the files gitted. Also removes errors.
+fi #End of if
+/usr/bin/git push 2> /dev/null
+#pushes the files to github without showing errors.
+	echo "Update at $(date | awk '{print $2,$3,$4}') : $Comm" >> git.log
+echo "Files were successfully pushed. Probably lol"
+exit 0
